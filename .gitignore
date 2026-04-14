@@ -1,0 +1,44 @@
+# ═══════════════════════════════════════════════
+# varaTestAiFramework — Git Ignore Rules
+# ═══════════════════════════════════════════════
+
+# ── Dependencies ─────────────────────────────
+node_modules/
+
+# ── Environment / Secrets ────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── Build & Reports ──────────────────────────
+reports/
+playwright-report/
+playwright-traces/
+playwright-videos/
+playwright-screenshots/
+test-results/
+
+# ── IDE ──────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── OS ───────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── AI/Vector Store Local Cache ──────────────
+data/vector_store/*.db
+data/vector_store/*.sqlite
+data/vector_store/chroma/
+
+# ── Generated Features (track selectively) ───
+# features/generated/ is tracked, but metrics are ephemeral
+features/generated/_smartgen-metrics.json
+
+# ── Logs ─────────────────────────────────────
+*.log
+!data/test-results/system-logs.log

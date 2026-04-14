@@ -1,0 +1,56 @@
+[
+  {
+    "id": "AUTH-101",
+    "summary": "User Login – Secure Authentication Flow",
+    "type": "Story",
+    "priority": "Critical",
+    "labels": ["auth", "security", "ui"],
+    "status": "Ready for Dev",
+    "acceptance_criteria": [
+      "Given a registered user visits the login page, when they enter valid credentials and click Sign In, then they are redirected to the dashboard with a personalized welcome message.",
+      "Given a user enters an incorrect password, when they click Sign In, then they see an error message 'Username and password do not match' and remain on the login page.",
+      "Given a user leaves username or password blank, when they click Sign In, then field-level validation errors are shown.",
+      "Given a locked-out account, when the user attempts to log in, then a 'Your account has been locked' message is shown.",
+      "Given an MFA-enabled account, after valid credentials, the user is prompted for a 6-digit TOTP code before accessing the dashboard.",
+      "Given a logged-in user, when they click logout, then the session is cleared and they are redirected to the login page."
+    ],
+    "epic": "Identity & Access Management",
+    "sprint": "Sprint 12"
+  },
+  {
+    "id": "API-202",
+    "summary": "User Management REST API – CRUD Operations",
+    "type": "Story",
+    "priority": "High",
+    "labels": ["api", "backend", "users"],
+    "status": "Ready for Dev",
+    "acceptance_criteria": [
+      "Given a POST /api/users request with valid name and job fields, the response status is 201 and the body contains an auto-generated id and createdAt timestamp.",
+      "Given a GET /api/users/{id} request for an existing user, the response status is 200 and the body contains the user's data object.",
+      "Given a GET /api/users/{id} request for a non-existent user id, the response status is 404.",
+      "Given a PUT /api/users/{id} request with a full user payload, the response status is 200 and the body contains an updatedAt timestamp.",
+      "Given a PATCH /api/users/{id} request with partial fields, the response status is 200 and only the specified fields are updated.",
+      "Given a DELETE /api/users/{id} request, the response status is 204 and the user no longer exists.",
+      "Given a GET /api/users?page=2 request, the response returns users for the second page with a correct page field in the body."
+    ],
+    "epic": "User Administration",
+    "sprint": "Sprint 12"
+  },
+  {
+    "id": "DASH-305",
+    "summary": "Dashboard Widgets – Real-Time Data Display",
+    "type": "Story",
+    "priority": "Medium",
+    "labels": ["dashboard", "ui", "real-time"],
+    "status": "Ready for Dev",
+    "acceptance_criteria": [
+      "Given a logged-in user on the dashboard, all widget data loads within 3 seconds.",
+      "Given the dashboard is loaded, each widget displays a loading skeleton before data arrives.",
+      "Given the user has no data for a widget, a friendly empty-state illustration with a call-to-action is shown.",
+      "Given the user refreshes the dashboard, all widget data is refreshed without a full page reload.",
+      "Given a data fetch error occurs, a retry button is displayed on the affected widget."
+    ],
+    "epic": "Dashboard Experience",
+    "sprint": "Sprint 13"
+  }
+]
