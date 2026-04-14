@@ -104,6 +104,28 @@ const riskReporter = {
 export default riskReporter;
 
 // ════════════════════════════════════════════════════════════════════
+// CLI Entry Point
+// ════════════════════════════════════════════════════════════════════
+
+if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname.substring(process.platform === 'win32' ? 1 : 0))) {
+  console.log('🚀 Starting Risk Report Generation...');
+  riskReporter.generate()
+    .then((report) => {
+      console.log('\n✅ Risk Report generated successfully!');
+      console.log(`📊 Summary:`);
+      console.log(`   - Flaky Scenarios:   ${report.summary.flakyCount}`);
+      console.log(`   - High Risk Scenarios: ${report.summary.highRiskCount}`);
+      console.log(`   - Total Test Runs:   ${report.summary.totalTestRuns}`);
+      console.log(`📂 Path: ${frameworkConfig.analytics.riskReportPath}`);
+      process.exit(0);
+    })
+    .catch((err) => {
+      console.error('\n❌ Analytics pipeline failed:', err);
+      process.exit(1);
+    });
+}
+
+// ════════════════════════════════════════════════════════════════════
 // Private Helpers
 // ════════════════════════════════════════════════════════════════════
 
